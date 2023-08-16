@@ -7,33 +7,46 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>페이지 가이드</title>
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="./css/contents.css" />
     <style>
+       
+        * {margin:0;padding:0;font-family:'Noto Sans KR', 'Malgun Gothic', '맑은 고딕', '돋움', sans-serif;}
+        html, body {overflow:auto;}
+        ol, ul, dl {margin:0 !important;padding:0;}
+        li {list-style:none;}
+        p {margin-bottom:0;}
+        .form-control-sm {display:inline-block;width:auto;}
+
+        .page-item .page-link,
+        div.dataTables_wrapper div.dataTables_filter label,
+        div.dataTables_wrapper div.dataTables_length label,
+        div.dataTables_wrapper div.dataTables_info {font-size:13px;}
+
+        table.dataTable thead .sorting:before, 
+        table.dataTable thead .sorting:after, 
+        table.dataTable thead .sorting_asc:before, 
+        table.dataTable thead .sorting_asc:after, 
+        table.dataTable thead .sorting_desc:before, 
+        table.dataTable thead .sorting_desc:after, 
+        table.dataTable thead .sorting_asc_disabled:before, 
+        table.dataTable thead .sorting_asc_disabled:after, 
+        table.dataTable thead .sorting_desc_disabled:before, 
+        table.dataTable thead .sorting_desc_disabled:after {bottom:inherit;top:50%;transform:translateY(-50%);}
+
+        table {border:0;border:1px solid #ddd;border-top:0;border-left:0;}
+        table th,
+        table td {border-left:1px solid #ddd;border-top:1px solid #ddd;padding:8px 15px;}
+        table th {font-size:14px;background-color:rgba(0, 0, 0, 0.03)}
+        table td {font-size:13px}
+
+        .tableType02 table {text-align:center}
+        .tableType02 table tbody tr > td {background-color:var(--white);}
+        .tableType02 table tbody tr:hover > td {background-color:#eee;}
         .tableType02 table tbody tr:hover td {background: #eee !important;}
-        /* .tableType02 table tbody tr td a{text-align: left;} */
     </style>
 </head>
 
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
-    <!-- left__sideNavi -->
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <!-- nav list -->
-                    <a class="nav-link active" href="guide.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                        Publishing List
-                    </a>
-                    <!-- //nav list -->
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- //left__sideNavi -->
-
     <!-- right__content -->
     <div id="layoutSidenav_content" class="guideWrap">
         <!-- content -->
@@ -69,14 +82,14 @@
                                     <td>로그인</td>
                                     <td></td>
                                     <td>page</td>
-                                    <td><a href="../html/login/login.html">/login/login.html</a></td>
+                                    <td><a href="./html/login/login.html">/login/login.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>비밀번호</td>
                                     <td></td>
                                     <td>page</td>
-                                    <td><a href="../html/login/password.html">/login/password.html</a></td>
+                                    <td><a href="./html/login/password.html">/login/password.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -84,77 +97,77 @@
                                     <td rowspan="4">메인</td>
                                     <td>메인</td>
                                     <td>page</td>
-                                    <td><a href="../html/club/index.html">/club/index.html</a></td>
+                                    <td><a href="./html/club/index.html">/club/index.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>업데이트 알림 팝업</td>
                                     <td>popup</td>
-                                    <td><a href="../html/club/index_popup1.html">/club/index_popup1.html</a></td>
+                                    <td><a href="./html/club/index_popup1.html">/club/index_popup1.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>최근변경내역 팝업1</td>
                                     <td>popup</td>
-                                    <td><a href="../html/club/index_popup2.html">/club/index_popup2.html</a></td>
+                                    <td><a href="./html/club/index_popup2.html">/club/index_popup2.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>최근변경내역 팝업2</td>
                                     <td>popup</td>
-                                    <td><a href="../html/club/index_popup3.html">/club/index_popup3.html</a></td>
+                                    <td><a href="./html/club/index_popup3.html">/club/index_popup3.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td rowspan="3">클럽 관리</td>
                                     <td>클럽 관리</td>
                                     <td>page</td>
-                                    <td><a href="../html/club/club.html">/club/club.html</a></td>
+                                    <td><a href="./html/club/club.html">/club/club.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>핀 히스토리 팝업1</td>
                                     <td>popup</td>
-                                    <td><a href="../html/club/club_popup1.html">/club/club_popup1.html</a></td>
+                                    <td><a href="./html/club/club_popup1.html">/club/club_popup1.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>핀 히스토리 팝업2</td>
                                     <td>popup</td>
-                                    <td><a href="../html/club/club_popup2.html">/club/club_popup2.html</a></td>
+                                    <td><a href="./html/club/club_popup2.html">/club/club_popup2.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">관리내역</td>
                                     <td>관리내역</td>
                                     <td>page</td>
-                                    <td><a href="../html/club/manage.html">/club/manage.html</a></td>
+                                    <td><a href="./html/club/manage.html">/club/manage.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>상세 내용 팝업</td>
                                     <td>popup</td>
-                                    <td><a href="../html/club/manage_popup.html">/club/manage_popup.html</a></td>
+                                    <td><a href="./html/club/manage_popup.html">/club/manage_popup.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">공지사항</td>
                                     <td>목록</td>
                                     <td>page</td>
-                                    <td><a href="../html/club/notice.html">/club/notice.html</a></td>
+                                    <td><a href="./html/club/notice.html">/club/notice.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>상세</td>
                                     <td>page</td>
-                                    <td><a href="../html/club/notice_view.html">/club/notice_view.html</a></td>
+                                    <td><a href="./html/club/notice_view.html">/club/notice_view.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>설정</td>
                                     <td>비밀번호 변경</td>
                                     <td>page</td>
-                                    <td><a href="../html/club/setting.html">/club/setting.html</a></td>
+                                    <td><a href="./html/club/setting.html">/club/setting.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -162,70 +175,70 @@
                                     <td rowspan="5">코스관리</td>
                                     <td>메인</td>
                                     <td>page</td>
-                                    <td><a href="../html/master/index.html">/master/index.html</a></td>
+                                    <td><a href="./html/master/index.html">/master/index.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>코스관리</td>
                                     <td>page</td>
-                                    <td><a href="../html/master/course.html">/master/course.html</a></td>
+                                    <td><a href="./html/master/course.html">/master/course.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>핀 히스토리 팝업1</td>
                                     <td>popup</td>
-                                    <td><a href="../html/master/course_popup1.html">/master/course_popup1.html</a></td>
+                                    <td><a href="./html/master/course_popup1.html">/master/course_popup1.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>최근 변경 내역 팝업1</td>
                                     <td>popup</td>
-                                    <td><a href="../html/master/course_popup2.html">/master/course_popup2.html</a></td>
+                                    <td><a href="./html/master/course_popup2.html">/master/course_popup2.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>최근 변경 내역 팝업2</td>
                                     <td>popup</td>
-                                    <td><a href="../html/master/course_popup3.html">/master/course_popup3.html</a></td>
+                                    <td><a href="./html/master/course_popup3.html">/master/course_popup3.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>운영현황</td>
                                     <td>운영현황</td>
                                     <td>page</td>
-                                    <td><a href="../html/master/operate.html">/master/operate.html</a></td>
+                                    <td><a href="./html/master/operate.html">/master/operate.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">공지사항</td>
                                     <td>목록</td>
                                     <td>page</td>
-                                    <td><a href="../html/master/notice.html">/master/notice.html</a></td>
+                                    <td><a href="./html/master/notice.html">/master/notice.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>쓰기</td>
                                     <td>page</td>
-                                    <td><a href="../html/master/notice_write.html">/master/notice_write.html</a></td>
+                                    <td><a href="./html/master/notice_write.html">/master/notice_write.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td rowspan="3">관리내역</td>
                                     <td>관리내역</td>
                                     <td>page</td>
-                                    <td><a href="../html/master/manage.html">/master/manage.html</a></td>
+                                    <td><a href="./html/master/manage.html">/master/manage.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>상세 내용 팝업</td>
                                     <td>popup</td>
-                                    <td><a href="../html/master/manage_popup1.html">/master/manage_popup1.html</a></td>
+                                    <td><a href="./html/master/manage_popup1.html">/master/manage_popup1.html</a></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>내역 등록 팝업</td>
                                     <td>popup</td>
-                                    <td><a href="../html/master/manage_popup2.html">/master/manage_popup2.html</a></td>
+                                    <td><a href="./html/master/manage_popup2.html">/master/manage_popup2.html</a></td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -241,7 +254,7 @@
     <!-- //right__content -->
 </div>
 
-<script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/plugin/jquery-3.4.1.min.js"></script>
 <script>
     $(document).ready(function(){
         $('.tableType02 td a').attr('target', '_blank');
