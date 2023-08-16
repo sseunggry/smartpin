@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- layer-popup -->
+        <div class="popup-wrap" id="layer-pop" style="display: block;">
+            <div class="popup-frame alert">
+                <div class="inner">
+                    <p class="txt">
+                        업데이트가 필요한 홀이 <br/>
+                        <span class="count">5</span>건 있습니다.
+                    </p>
+                    <div class="btn-con flex-center">
+                        <a href="#!" class="btn btn-s blue">확인</a>
+                        <a href="#!" class="btn btn-s gray2" onclick="popupCloseFn();">닫기</a>
+                    </div>
+                    <div class="btn-today">
+                        <input type="checkbox" id="todayChk">
+                        <label for="todayChk">오늘 하루 안보기</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // layer-popup -->
+    </div>
+
+    <script>
+        let canvas = document.querySelectorAll('.course-item canvas');
+    
+        canvas.forEach(function(el){
+            let context = el.getContext("2d");
+            let dataPin = el.getAttribute('data-pin');
+            let dataDot = el.getAttribute('data-dot');
+    
+            const bgCourse = new Image();
+            const pinRed = new Image();
+            const pinGray = new Image();
+            const pinDot = new Image();
+    
+            bgCourse.src= "../../assets/img/content/course_round.svg";
+            pinRed.src= "../../assets/img/content/pin_red.svg";
+            pinGray.src= "../../assets/img/content/pin_gray.svg";
+            pinDot.src= "../../assets/img/content/pin_dot.svg";
+    
+            bgCourse.onload = function(){
+                context.drawImage(bgCourse, 0, 0,  el.width, el.height);
+    
+                if(dataPin){
+                    dataPin = dataPin.split(',');
+                    pinRed.onload = function(){
+                        context.drawImage(pinRed, dataPin[0] || 0, dataPin[1] || 0, 24, 39);
+                    }
+                    pinGray.onload = function(){
+                        context.drawImage(pinGray, dataPin[2] || 0, dataPin[3] || 0, 26, 69);
+                    }
+                }
+                if(dataDot){
+                    dataDot = dataDot.split(',');
+                    pinDot.onload = function(){
+                        context.drawImage(pinDot, dataDot[0] || 0, dataDot[1] || 0, 24, 24);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

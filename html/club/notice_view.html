@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header club">
+            <!-- club / master class로 변경 -->
+            <div class="logo-con">
+                <h1 class="logo">
+                    <a href="#!"><img src="../../assets/img/common/logo.png" alt=""></a>
+                </h1>
+                <p>CLUB Manager</p>
+            </div>
+            <div class="util-menu">
+                <div class="message">
+                    <a href="#!">
+                        <img src="../../assets/img/common/ico_message.png" alt="">
+                    </a>
+                </div>
+
+                <a href="#!" class="alarm">
+                    <img src="../../assets/img/common/ico_alarm.png" alt="">
+                    <span>5</span>
+                </a>
+
+                <div class="profile">
+                    <div class="picture">
+                        <img src="../../assets/img/content/sample_profile.png" alt="">
+                    </div>
+                    <div class="user">
+                        <button type="button" class="user-name" onclick="profileEventFn();">골프존카운티 안성H</button>
+                        <ul class="mypage-menu">
+                            <li><a href="#!">비밀번호 변경</a></li>
+                            <li><a href="#!">로그아웃</a></li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+
+            <div class="full-btn">
+                <div class="inner">
+                    <button type="button" onclick="fullPageEventFn();"></button>
+                    <p class="full-txt">전체보기 모드롤 실행합니다</p>
+                </div>
+            </div>
+        </div>
+        <!--// header -->
+        
+        <!-- frame -->
+        <div class="frame">
+            <!-- nav -->
+            <div class="nav">
+                <div class="inner">
+                    <!-- 활성화 된 메뉴 li 태그에 active class 추가 -->
+                    <div class="top-menu">
+                        <ul class="nav-list">
+                            <li class="gnb_01 active"><a href="index.html">Home</a></li>
+                            <li class="gnb_02"><a href="club.html">클럽관리</a></li>
+                            <li class="gnb_04"><a href="manage.html">관리내역</a></li>
+                            <li class="gnb_05"><a href="notice.html">공지사항</a></li>
+                            <li class="gnb_07"><a href="setting.html">설정</a></li>
+                        </ul>
+                        <div class="customer">
+                            <dl>
+                                <dt>고객센터</dt>
+                                <dd class="tel">1644-5721</dd>
+                                <dd class="guide">평일 10~17시(휴무일 제외)</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="address">
+                        <address>
+                            <p>All Rights Reserved.</p>
+                            <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- // nav -->
+
+            <div class="mob-util master">
+                <!-- club / master class로 변경 -->
+                <div class="inner">
+                    <div class="fix-btn" onclick="mobileMenuEventFn();">
+                        <div class="profile">
+                            <div class="picture">
+                                <img src="../../assets/img/content/sample_profile.png" alt="">
+                            </div>
+                            <p class="user-name">골프존카운티 안성H</p>
+                        </div>
+
+                        <div class="message">
+                            <a href="#!">
+                                <img src="../../assets/img/common/ico_message.png" alt="">
+                            </a>
+                        </div>
+
+                        <a href="#!" class="alarm">
+                            <img src="../../assets/img/common/ico_alarm.png" alt="">
+                            <span>10</span>
+                        </a>
+                    </div>
+                    <div class="respon-con">
+                        <ul class="nav-list">
+                            <li class="gnb_01 active"><a href="club.html">클럽관리</a></li>
+                            <li class="gnb_03"><a href="manage.html">관리내역</a></li>
+                            <li class="gnb_04"><a href="notice.html">공지사항</a></li>
+                            <li class="gnb_06"><a href="setting.html">설정</a></li>
+                        </ul>
+                        <div class="logout-btn">
+                            <a href="#">로그아웃</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+            <!-- contents -->
+            <div class="contents">
+                <div class="inner">
+
+                    <!-- history-wrap -->
+                    <div class="history-wrap">
+                        <div class="profile-logo">
+                            <img src="../../assets/img/content/sample_profile.png" alt="">
+                        </div>
+                        <p class="name">골프존카운티 안성H</p>
+                        <p class="history">Last Update : 2023 - 4 - 24 AM 08:25:06</p>
+                    </div>
+                    <!-- // history-wrap -->
+
+                    <!-- notice-view-wrap -->
+                    <div class="notice-view-wrap">
+                        <p class="tit-m">공지사항</p>
+                        <div class="info-con">
+                            <p class="category">코스</p>
+                            <p class="txt">배터리 사용량에 따른 일시 점검 진행일정 확정 안내</p>
+                            <p class="date">2023. 6. 06</p>
+                            <p class="logo">
+                                <img src="../../assets/img/common/ico_logo_b.svg" alt="">
+                            </p>
+                        </div>
+                        <div class="txt-con">
+                            <p>
+                                힐코스 1, 4, 5번이 잡히질 않습니다. <br/>
+                                배터리의 영향으로 보이는데 배터리 교체 일정에 대해 문의 드립니다. <br/>
+                                답변 혹은 담당자에게 유선으로 연락주시면 감사하겠습니다. <br/>
+                            </p>
+                            <img src="../../assets/img/common/img_notice_view.jpg" alt="">
+                        </div>
+                        <div class="btn-con mt-5">
+                            <a href="#!" class="btn btn-l gray2">목록</a>
+                        </div>
+                    </div>
+                    <!-- // notice-view-wrap -->
+
+                </div>
+            </div>
+            <!-- // contents -->
+
+        </div>
+        <!-- // frame -->
+
+        <!-- footer -->
+        <div class="footer mo-only">
+            <div class="address">
+                <p class="logo">
+                    <img src="../../assets/img/common/footer_logo.png" alt="">
+                </p>
+                <address>
+                    <p><span>(주)골프존데카</span></p>
+                    <p>경기도 성남시 분당구 판교로 253(삼평동 621) 이노밸리 C동 303로 (13486)</p>
+                    <p>사업자 등록번호 : 214-87-45311</p>
+                    <p class="line">TEL : 031-709-8038~9 FAX : 031-709-7032</p>
+                    <p>© 2023 GolfzonDeca Inc. All Rights Reserved.</p>
+                    <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                </address>
+            </div>
+        </div>
+        <!--// footer -->
+    </div>
+
+</body>
+</html>

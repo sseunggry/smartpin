@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header master">
+            <!-- club / master class로 변경 -->
+            <div class="logo-con">
+                <h1 class="logo">
+                    <a href="#!"><img src="../../assets/img/common/logo.png" alt=""></a>
+                </h1>
+                <p>MASTER Manager</p>
+            </div>
+            <div class="util-menu">
+                <div class="message">
+                    <a href="#!">
+                        <img src="../../assets/img/common/ico_message.png" alt="">
+                    </a>
+                </div>
+
+                <a href="#!" class="alarm">
+                    <img src="../../assets/img/common/ico_alarm.png" alt="">
+                    <span>5</span>
+                </a>
+
+                <div class="profile">
+                    <div class="picture">
+                        <img src="../../assets/img/common/ico_logo.svg" alt="">
+                    </div>
+                    <div class="user">
+                        <button type="button" class="user-name" onclick="profileEventFn();">GOLFZON DECA</button>
+                        <ul class="mypage-menu">
+                            <li><a href="#!">비밀번호 변경</a></li>
+                            <li><a href="#!">로그아웃</a></li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--// header -->
+
+        <!-- frame -->
+        <div class="frame">
+            <!-- nav -->
+            <div class="nav">
+                <div class="inner">
+                    <!-- 활성화 된 메뉴 li 태그에 active class 추가 -->
+                    <div class="top-menu">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04 active"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="address">
+                        <p class="logo">
+                            <img src="../../assets/img/common/footer_logo.png" alt="">
+                        </p>
+                        <address>
+                            <p>경기도 성남시 분당구 판교로 253(삼평동 621) <br> 이노밸리 C동 303로 (13486)</p>
+                            <p class="line"><span>(주)골프존데카</span></p>
+                            <p>사업자 등록번호 : 214-87-45311</p>
+                            <p>TEL : 031-709-8038~9</p>
+                            <p class="line">FAX : 031-709-7032</p>
+                            <p>© 2023 GolfzonDeca Inc.</p>
+                            <p>All Rights Reserved.</p>
+                            <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- // nav -->
+
+            <div class="mob-util master">
+                <!-- club / master class로 변경 -->
+                <div class="inner">
+                    <div class="fix-btn" onclick="mobileMenuEventFn();">
+                        <div class="profile">
+                            <div class="picture">
+                                <img src="../../assets/img/content/sample_profile.png" alt="">
+                            </div>
+                            <p class="user-name">골프존카운티 안성H</p>
+                        </div>
+
+                        <div class="message">
+                            <a href="#!">
+                                <img src="../../assets/img/common/ico_message.png" alt="">
+                            </a>
+                        </div>
+
+                        <a href="#!" class="alarm">
+                            <img src="../../assets/img/common/ico_alarm.png" alt="">
+                            <span>10</span>
+                        </a>
+                    </div>
+                    <div class="respon-con">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04 active"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                        <div class="logout-btn">
+                            <a href="#">로그아웃</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+                    
+            <!-- contents -->
+            <div class="contents">
+                <div class="inner">
+                    
+                    <!-- table-list-wrap -->
+                    <div class="manage-list-wrap">
+                        <p class="tit-l tit-bar">관리내역</p>
+
+                        <!-- search-form -->
+                        <div class="search-form">
+                            <div class="item">
+                                <div class="inner">
+                                    <div class="inp-con date-con">
+                                        <div class="inp">
+                                            <label for="inp13" class="inp-label blind">날짜 선택</label>
+                                            <div class="inp-area">
+                                                <div class="inp-group cal">
+                                                    <button type="button" class="btn-cal"></button>
+                                                    <input type="text" id="inp13" placeholder="날짜를 선택하세요.">
+                                                </div>
+                                                <span class="dash">~</span>
+                                                <div class="inp-group cal">
+                                                    <button type="button" class="btn-cal"></button>
+                                                    <input type="text" id="inp14" placeholder="날짜를 선택하세요.">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="data-list">
+                                        <li class="active"><a href="#!">오늘</a></li>
+                                        <li><a href="#!">1주일</a></li>
+                                        <li><a href="#!">1개월</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // search-form -->
+
+                        <!-- btn-wrap -->
+                        <div class="btn-wrap">
+                            <div class="btn-con">
+                                <a href="#!" class="btn btn-m red2" onclick="popupOpenFn('register-pop')">내역등록</a>
+                                <a href="#!" class="btn btn-m gray2">삭제</a>
+                            </div>
+                        </div>
+                        <!-- // btn-wrap -->
+
+                        <!-- table-wrap -->
+                        <div class="table-wrap table3">
+                            <div class="table-head">
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_all">
+                                        <label for="cb_all" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>NO</p>
+                                    <p>방문 일자</p>
+                                    <p>코스</p>
+                                    <p>홀</p>
+                                    <p>담당자</p>
+                                    <p>상세내용</p>
+                                </div>
+                            </div>
+                            <div class="table-body">
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_01">
+                                        <label for="cb_01" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_02">
+                                        <label for="cb_02" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_03">
+                                        <label for="cb_03" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_04">
+                                        <label for="cb_04" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_05">
+                                        <label for="cb_05" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_06">
+                                        <label for="cb_06" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_07">
+                                        <label for="cb_07" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_08">
+                                        <label for="cb_08" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_09">
+                                        <label for="cb_09" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p>
+                                        <input type="checkbox" id="cb_10">
+                                        <label for="cb_10" class="inp-checkbox"></label>
+                                    </p>
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>이유라</p>
+                                    <p>
+                                        <a href="#!" class="btn btn-s gray2" onclick="popupOpenFn('detail-pop')">확인</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // table-wrap -->
+
+                        <!-- paging -->
+                        <div class="paging">
+                            <button type="button" class="prev"></button>
+                            <div class="page-list">
+                                <button type="button" class="on">1</button>
+                                <button type="button">2</button>
+                                <button type="button">3</button>
+                                <button type="button">4</button>
+                                <button type="button">5</button>
+                                <button type="button">6</button>
+                                <button type="button">7</button>
+                                <button type="button">8</button>
+                                <button type="button">9</button>
+                                <button type="button">10</button>
+                            </div>
+                            <button type="button" class="next"></button>
+                        </div>
+                        <!-- // paging -->
+
+                    </div>
+                    <!-- // table-list-wrap -->
+
+
+                </div>
+            </div>
+            <!-- // contents -->
+
+        </div>
+        <!-- // frame -->
+
+        <!-- footer -->
+        <div class="footer mo-only">
+            <div class="address">
+                <p class="logo">
+                    <img src="../../assets/img/common/footer_logo.png" alt="">
+                </p>
+                <address>
+                    <p><span>(주)골프존데카</span></p>
+                    <p>경기도 성남시 분당구 판교로 253(삼평동 621) 이노밸리 C동 303로 (13486)</p>
+                    <p>사업자 등록번호 : 214-87-45311</p>
+                    <p class="line">TEL : 031-709-8038~9 FAX : 031-709-7032</p>
+                    <p>© 2023 GolfzonDeca Inc. All Rights Reserved.</p>
+                    <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                </address>
+            </div>
+        </div>
+        <!--// footer -->
+
+        <!-- popup -->
+        <div class="popup-wrap" id="detail-pop">
+            <div class="popup-frame">
+                <div class="inner">
+                    <div class="title">
+                        <p>상세 내용</p>
+                    </div>
+                    <div class="detail-con">
+                        <div class="item-con">
+                            <div class="item half">
+                                <dl class="flex">
+                                    <dt>방문일자</dt>
+                                    <dd class="inp">
+                                        <div class="inp-group date cal">
+                                            <button type="button" class="btn-cal"></button>
+                                            <input type="text" placeholder="날짜 선택" value="2023-06-16">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="flex">
+                                    <dt>코스/홀</dt>
+                                    <dd class="inp">
+                                        <div class="inp-group course">
+                                            <input type="text" value="사파이어">
+                                        </div>
+                                        <div class="inp-group hole">
+                                            <input type="number" value="8">
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="item half">
+                                <dl class="flex">
+                                    <dt>담당자</dt>
+                                    <dd class="inp">
+                                        <div class="inp-group user">
+                                            <input type="text" value="이유라">
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="item-con">
+                            <div class="item">
+                                <dl class="flex">
+                                    <dt>A/S내용</dt>
+                                    <dd class="inp">
+                                        <div class="inp-group text-area">
+                                            <textarea>스마트핀 교체</textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="item">
+                                <dl class="flex">
+                                    <dt>원인</dt>
+                                    <dd class="inp">
+                                        <div class="inp-group text-area">
+                                            <textarea>빗물 침수</textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="item">
+                                <dl class="flex">
+                                    <dt>비고</dt>
+                                    <dd class="inp">
+                                        <div class="inp-group text-area">
+                                            <textarea>스마트핀 회수</textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="btn-con">
+                            <a href="#!" class="btn btn-m gray2" onclick="popupCloseFn();">닫기</a>
+                            <a href="#!" class="btn btn-m red2 pos-r">삭제</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // popup -->
+
+        <!-- popup -->
+        <div class="popup-wrap" id="register-pop">
+            <div class="popup-frame">
+                <div class="inner">
+                    <div class="title">
+                        <p>내역 등록</p>
+                    </div>
+                    <div class="detail-con">
+                        <div class="item-con">
+                            <div class="item">
+                                <div class="inp">
+                                    <div class="inp-group date cal">
+                                        <button type="button" class="btn-cal"></button>
+                                        <input type="text" placeholder="날짜 선택">
+                                    </div>
+                                    <div class="inp-select middle">
+                                        <div class="select">
+                                            <p class="selected-value">담당자 선택</p>
+                                        </div>
+                                        <ul class="list">
+                                            <li class="option" data-value="">김호준</li>
+                                            <li class="option" data-value="">이유라</li>
+                                            <li class="option" data-value="">권용준</li>
+                                            <li class="option" data-value="">강보권</li>
+                                            <li class="option" data-value="">정주명</li>
+                                            <li class="option" data-value="">장재일</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item flex">
+                                <div class="search-con">
+                                    <div class="inp">
+                                        <label for="inp1" class="inp-label blind">검색어 입력</label>
+                                        <div class="inp-area">
+                                            <div class="inp-group search">
+                                                <input type="text" id="inp1" placeholder="클럽명을 검색하세요.">
+                                                <button type="button" class="btn-search"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="txt">
+                                        <span>골프존카운티 안성H</span>
+                                        <button type="button" class="ico-del"></button>
+                                    </p>
+                                </div>
+                                <div class="inp-select middle">
+                                    <div class="select">
+                                        <p class="selected-value">코스 선택</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">힐</li>
+                                        <li class="option" data-value="">레이크</li>
+                                    </ul>
+                                </div>
+                                <div class="inp-select middle hole">
+                                    <div class="select">
+                                        <p class="selected-value">홀 선택</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">1</li>
+                                        <li class="option" data-value="">2</li>
+                                        <li class="option" data-value="">3</li>
+                                        <li class="option" data-value="">4</li>
+                                        <li class="option" data-value="">5</li>
+                                        <li class="option" data-value="">6</li>
+                                        <li class="option" data-value="">7</li>
+                                        <li class="option" data-value="">8</li>
+                                        <li class="option" data-value="">9</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="inp">
+                                    <div class="inp-group text-area">
+                                        <textarea placeholder="A/S 내용을 적어주세요"></textarea>
+                                    </div>
+                                </div>
+                                <div class="inp">
+                                    <div class="inp-group text-area">
+                                        <textarea placeholder="A/S 내용을 적어주세요"></textarea>
+                                    </div>
+                                </div>
+                                <div class="inp">
+                                    <div class="inp-group text-area">
+                                        <textarea placeholder="비고를 입력해주세요."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-con">
+                            <a href="#!" class="btn btn-m blue">저장</a>
+                            <a href="#!" class="btn btn-m gray2" onclick="popupCloseFn();">취소</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // popup -->
+
+    </div>
+
+</body>
+</html>

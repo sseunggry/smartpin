@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header master">
+            <!-- club / master class로 변경 -->
+            <div class="logo-con">
+                <h1 class="logo">
+                    <a href="#!"><img src="../../assets/img/common/logo.png" alt=""></a>
+                </h1>
+                <p>MASTER Manager</p>
+            </div>
+            <div class="util-menu">
+                <div class="message">
+                    <a href="#!">
+                        <img src="../../assets/img/common/ico_message.png" alt="">
+                    </a>
+                </div>
+
+                <a href="#!" class="alarm">
+                    <img src="../../assets/img/common/ico_alarm.png" alt="">
+                    <span>5</span>
+                </a>
+
+                <div class="profile">
+                    <div class="picture">
+                        <img src="../../assets/img/common/ico_logo.svg" alt="">
+                    </div>
+                    <div class="user">
+                        <button type="button" class="user-name" onclick="profileEventFn();">GOLFZON DECA</button>
+                        <ul class="mypage-menu">
+                            <li><a href="#!">비밀번호 변경</a></li>
+                            <li><a href="#!">로그아웃</a></li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--// header -->
+        
+        <!-- frame -->
+        <div class="frame">
+            <!-- nav -->
+            <div class="nav">
+                <div class="inner">
+                    <!-- 활성화 된 메뉴 li 태그에 active class 추가 -->
+                    <div class="top-menu">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03 active"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="address">
+                        <p class="logo">
+                            <img src="../../assets/img/common/footer_logo.png" alt="">
+                        </p>
+                        <address>
+                            <p>경기도 성남시 분당구 판교로 253(삼평동 621) <br> 이노밸리 C동 303로 (13486)</p>
+                            <p class="line"><span>(주)골프존데카</span></p>
+                            <p>사업자 등록번호 : 214-87-45311</p>
+                            <p>TEL : 031-709-8038~9</p>
+                            <p class="line">FAX : 031-709-7032</p>
+                            <p>© 2023 GolfzonDeca Inc.</p>
+                            <p>All Rights Reserved.</p>
+                            <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- // nav -->
+
+            <div class="mob-util master">
+                <!-- club / master class로 변경 -->
+                <div class="inner">
+                    <div class="fix-btn" onclick="mobileMenuEventFn();">
+                        <div class="profile">
+                            <div class="picture">
+                                <img src="../../assets/img/content/sample_profile.png" alt="">
+                            </div>
+                            <p class="user-name">골프존카운티 안성H</p>
+                        </div>
+
+                        <div class="message">
+                            <a href="#!">
+                                <img src="../../assets/img/common/ico_message.png" alt="">
+                            </a>
+                        </div>
+
+                        <a href="#!" class="alarm">
+                            <img src="../../assets/img/common/ico_alarm.png" alt="">
+                            <span>10</span>
+                        </a>
+                    </div>
+                    <div class="respon-con">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03 active"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                        <div class="logout-btn">
+                            <a href="#">로그아웃</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+                    
+            <!-- contents -->
+            <div class="contents">
+                <div class="inner">
+
+                    <!-- notice-view-wrap -->
+                    <div class="notice-view-wrap">
+                        <h2 class="tit-l tit-bar">공지사항</h2>
+
+                        <div class="write-wrap">
+                            <div class="inp-con">
+                                <div class="inp-select">
+                                    <div class="select">
+                                        <p class="selected-value">공지 유형</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">코스</li>
+                                        <li class="option" data-value="">교체</li>
+                                        <li class="option" data-value="">배터리</li>
+                                        <li class="option" data-value="">업데이트</li>
+                                    </ul>
+                                </div>
+                                <div class="inp">
+                                    <label for="inp1" class="inp-label blind">제목</label>
+                                    <div class="inp-group">
+                                        <input type="email" id="inp1" placeholder="제목을 입력해주세요.">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inp mt-2">
+                                <label class="inp-label blind">상세 내용</label>
+                                <div class="inp-group text-area">
+                                    <textarea placeholder="상세 내용을 입력해주세요."></textarea>
+                                </div>
+                            </div>
+                            <div class="bottom-con">
+                                <div class="inp file">
+                                    <label for="file" class="inp-label">파일첨부</label>
+                                    <input type="file" id="file">
+                                    <div class="inp-group">
+                                        <p class="upload-name">
+                                            C:\fakepath\ico_master_gnb_on_02.png
+                                            <button type="button" class="ico-del"></button>
+                                        </p>
+                                        <p class="upload-name">
+                                            C:\fakepath\ico_master_gnb_on_02.png
+                                            <button type="button" class="ico-del"></button>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="btn-con">
+                                    <button type="button" class="btn btn-l blue">확인</button>
+                                    <button type="button" class="btn btn-l gray2">취소</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // notice-view-wrap -->
+
+                </div>
+            </div>
+            <!-- // contents -->
+
+        </div>
+        <!-- // frame -->
+
+        <!-- footer -->
+        <div class="footer mo-only">
+            <div class="address">
+                <p class="logo">
+                    <img src="../../assets/img/common/footer_logo.png" alt="">
+                </p>
+                <address>
+                    <p><span>(주)골프존데카</span></p>
+                    <p>경기도 성남시 분당구 판교로 253(삼평동 621) 이노밸리 C동 303로 (13486)</p>
+                    <p>사업자 등록번호 : 214-87-45311</p>
+                    <p class="line">TEL : 031-709-8038~9 FAX : 031-709-7032</p>
+                    <p>© 2023 GolfzonDeca Inc. All Rights Reserved.</p>
+                    <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                </address>
+            </div>
+        </div>
+        <!--// footer -->
+    </div>
+
+<script>
+    (function(){
+        $('.inp.file').on('change', function(){
+            let fileName = $('.inp.file .inp-label ~ input').val();
+            $('.inp.file .upload-name').text(fileName);
+        });
+    })();
+</script>
+</body>
+</html>

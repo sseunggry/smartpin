@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header master">
+            <!-- club / master class로 변경 -->
+            <div class="logo-con">
+                <h1 class="logo">
+                    <a href="#!"><img src="../../assets/img/common/logo.png" alt=""></a>
+                </h1>
+                <p>MASTER Manager</p>
+            </div>
+            <div class="util-menu">
+                <div class="message">
+                    <a href="#!">
+                        <img src="../../assets/img/common/ico_message.png" alt="">
+                    </a>
+                </div>
+
+                <a href="#!" class="alarm">
+                    <img src="../../assets/img/common/ico_alarm.png" alt="">
+                    <span>5</span>
+                </a>
+
+                <div class="profile">
+                    <div class="picture">
+                        <img src="../../assets/img/common/ico_logo.svg" alt="">
+                    </div>
+                    <div class="user">
+                        <button type="button" class="user-name" onclick="profileEventFn();">GOLFZON DECA</button>
+                        <ul class="mypage-menu">
+                            <li><a href="#!">비밀번호 변경</a></li>
+                            <li><a href="#!">로그아웃</a></li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--// header -->
+
+        <!-- frame -->
+        <div class="frame">
+            <!-- nav -->
+            <div class="nav">
+                <div class="inner">
+                    <!-- 활성화 된 메뉴 li 태그에 active class 추가 -->
+                    <div class="top-menu">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02 active"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="address">
+                        <p class="logo">
+                            <img src="../../assets/img/common/footer_logo.png" alt="">
+                        </p>
+                        <address>
+                            <p>경기도 성남시 분당구 판교로 253(삼평동 621) <br> 이노밸리 C동 303로 (13486)</p>
+                            <p class="line"><span>(주)골프존데카</span></p>
+                            <p>사업자 등록번호 : 214-87-45311</p>
+                            <p>TEL : 031-709-8038~9</p>
+                            <p class="line">FAX : 031-709-7032</p>
+                            <p>© 2023 GolfzonDeca Inc.</p>
+                            <p>All Rights Reserved.</p>
+                            <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- // nav -->
+
+            <div class="mob-util master">
+                <!-- club / master class로 변경 -->
+                <div class="inner">
+                    <div class="fix-btn" onclick="mobileMenuEventFn();">
+                        <div class="profile">
+                            <div class="picture">
+                                <img src="../../assets/img/content/sample_profile.png" alt="">
+                            </div>
+                            <p class="user-name">골프존카운티 안성H</p>
+                        </div>
+
+                        <div class="message">
+                            <a href="#!">
+                                <img src="../../assets/img/common/ico_message.png" alt="">
+                            </a>
+                        </div>
+
+                        <a href="#!" class="alarm">
+                            <img src="../../assets/img/common/ico_alarm.png" alt="">
+                            <span>10</span>
+                        </a>
+                    </div>
+                    <div class="respon-con">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02 active"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                        <div class="logout-btn">
+                            <a href="#">로그아웃</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+            <!-- contents -->
+            <div class="contents">
+                <div class="inner">
+                    
+                    <!-- table-list-wrap -->
+                    <div class="manage-list-wrap">
+                        <p class="tit-l tit-bar">운영현황</p>
+
+                        <!-- search-form -->
+                        <div class="search-form">
+                            <div class="item">
+                                <div class="inner">
+                                    <div class="inp-con date-con">
+                                        <div class="inp">
+                                            <label for="inp13" class="inp-label blind">날짜 선택</label>
+                                            <div class="inp-area">
+                                                <div class="inp-group cal">
+                                                    <button type="button" class="btn-cal"></button>
+                                                    <input type="text" id="inp13" placeholder="날짜를 선택하세요.">
+                                                </div>
+                                                <span class="dash">~</span>
+                                                <div class="inp-group cal">
+                                                    <button type="button" class="btn-cal"></button>
+                                                    <input type="text" id="inp14" placeholder="날짜를 선택하세요.">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="data-list">
+                                        <li class="active"><a href="#!">오늘</a></li>
+                                        <li><a href="#!">1주일</a></li>
+                                        <li><a href="#!">1개월</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="item search-item">
+                                <div class="inner">
+                                    <div class="inp-select">
+                                        <div class="select">
+                                            <p class="selected-value">전체</p>
+                                        </div>
+                                        <ul class="list">
+                                            <li class="option" data-value="">전체</li>
+                                            <li class="option" data-value="">강원도</li>
+                                            <li class="option" data-value="">경기도</li>
+                                            <li class="option" data-value="">경상남도</li>
+                                            <li class="option" data-value="">경상북도</li>
+                                            <li class="option" data-value="">전라남도</li>
+                                            <li class="option" data-value="">전라북도</li>
+                                            <li class="option" data-value="">서울</li>
+                                            <li class="option" data-value="">충청남도</li>
+                                            <li class="option" data-value="">충청북도</li>
+                                            <li class="option" data-value="">제주도</li>
+                                        </ul>
+                                    </div>
+                                    <div class="inp inp-textarea">
+                                        <label for="inp1" class="inp-label blind">검색어 입력</label>
+                                        <div class="inp-area">
+                                            <div class="inp-group search">
+                                                <input type="text" id="inp1" placeholder="클럽명을 검색하세요.">
+                                                <button type="button" class="btn-search"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- // search-form -->
+
+                        <!-- table-wrap -->
+                        <div class="table-wrap table2">
+                            <div class="table-head">
+                                <div class="item">
+                                    <p>NO</p>
+                                    <p>일자</p>
+                                    <p>지역</p>
+                                    <p>클럽명</p>
+                                    <p>코스</p>
+                                    <p>홀</p>
+                                    <p>레벨</p>
+                                    <p>ADC</p>
+                                    <p>최신 업데이트</p>
+                                    <p>비고</p>
+                                </div>
+                            </div>
+                            <div class="table-body">
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                                <div class="item">
+                                    <p>1</p>
+                                    <p>2023. 05. 21</p>
+                                    <p>전남 순천</p>
+                                    <p>골프존카운디 순천</p>
+                                    <p>에메랄드(01)</p>
+                                    <p>4</p>
+                                    <p>5</p>
+                                    <p>99% (1796)</p>
+                                    <p>2023-05-03 18:20:37</p>
+                                    <p>-1</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // table-wrap -->
+
+                        <!-- paging -->
+                        <div class="paging">
+                            <button type="button" class="prev"></button>
+                            <div class="page-list">
+                                <button type="button" class="on">1</button>
+                                <button type="button">2</button>
+                                <button type="button">3</button>
+                                <button type="button">4</button>
+                                <button type="button">5</button>
+                                <button type="button">6</button>
+                                <button type="button">7</button>
+                                <button type="button">8</button>
+                                <button type="button">9</button>
+                                <button type="button">10</button>
+                            </div>
+                            <button type="button" class="next"></button>
+                        </div>
+                        <!-- // paging -->
+
+                    </div>
+                    <!-- // table-list-wrap -->
+
+
+                </div>
+            </div>
+            <!-- // contents -->
+
+        </div>
+        <!-- // frame -->
+        
+        <!-- footer -->
+        <div class="footer mo-only">
+            <div class="address">
+                <p class="logo">
+                    <img src="../../assets/img/common/footer_logo.png" alt="">
+                </p>
+                <address>
+                    <p><span>(주)골프존데카</span></p>
+                    <p>경기도 성남시 분당구 판교로 253(삼평동 621) 이노밸리 C동 303로 (13486)</p>
+                    <p>사업자 등록번호 : 214-87-45311</p>
+                    <p class="line">TEL : 031-709-8038~9 FAX : 031-709-7032</p>
+                    <p>© 2023 GolfzonDeca Inc. All Rights Reserved.</p>
+                    <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                </address>
+            </div>
+        </div>
+        <!--// footer -->
+
+    </div>
+
+</body>
+</html>

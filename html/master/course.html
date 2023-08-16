@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header master">
+            <!-- club / master class로 변경 -->
+            <div class="logo-con">
+                <h1 class="logo">
+                    <a href="#!"><img src="../../assets/img/common/logo.png" alt=""></a>
+                </h1>
+                <p>MASTER Manager</p>
+            </div>
+            <div class="util-menu">
+                <div class="message">
+                    <a href="#!">
+                        <img src="../../assets/img/common/ico_message.png" alt="">
+                    </a>
+                </div>
+
+                <a href="#!" class="alarm">
+                    <img src="../../assets/img/common/ico_alarm.png" alt="">
+                    <span>5</span>
+                </a>
+
+                <div class="profile">
+                    <div class="picture">
+                        <img src="../../assets/img/common/ico_logo.svg" alt="">
+                    </div>
+                    <div class="user">
+                        <button type="button" class="user-name" onclick="profileEventFn();">GOLFZON DECA</button>
+                        <ul class="mypage-menu">
+                            <li><a href="#!">비밀번호 변경</a></li>
+                            <li><a href="#!">로그아웃</a></li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--// header -->
+        
+        <!-- frame -->
+        <div class="frame">
+            <!-- nav -->
+            <div class="nav">
+                <div class="inner">
+                    <!-- 활성화 된 메뉴 li 태그에 active class 추가 -->
+                    <div class="top-menu">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01 active"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="address">
+                        <p class="logo">
+                            <img src="../../assets/img/common/footer_logo.png" alt="">
+                        </p>
+                        <address>
+                            <p>경기도 성남시 분당구 판교로 253(삼평동 621) <br> 이노밸리 C동 303로 (13486)</p>
+                            <p class="line"><span>(주)골프존데카</span></p>
+                            <p>사업자 등록번호 : 214-87-45311</p>
+                            <p>TEL : 031-709-8038~9</p>
+                            <p class="line">FAX : 031-709-7032</p>
+                            <p>© 2023 GolfzonDeca Inc.</p>
+                            <p>All Rights Reserved.</p>
+                            <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- // nav -->
+
+            <div class="mob-util master">
+                <!-- club / master class로 변경 -->
+                <div class="inner">
+                    <div class="fix-btn" onclick="mobileMenuEventFn();">
+                        <div class="profile">
+                            <div class="picture">
+                                <img src="../../assets/img/content/sample_profile.png" alt="">
+                            </div>
+                            <p class="user-name">골프존카운티 안성H</p>
+                        </div>
+
+                        <div class="message">
+                            <a href="#!">
+                                <img src="../../assets/img/common/ico_message.png" alt="">
+                            </a>
+                        </div>
+
+                        <a href="#!" class="alarm">
+                            <img src="../../assets/img/common/ico_alarm.png" alt="">
+                            <span>10</span>
+                        </a>
+                    </div>
+                    <div class="respon-con">
+                        <ul class="nav-list">
+                            <li class="master_gnb_01 active"><a href="index.html">코스관리</a></li>
+                            <li class="master_gnb_02"><a href="operate.html">운영현황</a></li>
+                            <li class="master_gnb_03"><a href="notice.html">공지사항</a></li>
+                            <li class="master_gnb_04"><a href="manage.html">관리내역</a></li>
+                        </ul>
+                        <div class="logout-btn">
+                            <a href="#">로그아웃</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+            <!-- contents -->
+            <div class="contents">
+                <div class="inner">
+
+                    <!-- course-manage-wrap -->
+                    <div class="course-manage-wrap">
+                        <h2 class="tit-l tit-bar">코스관리</h2>
+
+                        <!-- history-wrap -->
+                        <div class="history-wrap type2">
+                            <a href="#!" class="btn-back"></a>
+                            <div class="info-con">
+                                <div class="profile-logo">
+                                    <img src="../../assets/img/content/sample_profile.png" alt="">
+                                </div>
+                                <p class="name">골프존카운티 안성H</p>
+                                <p class="history">Last Update : 2023 - 4 - 24 AM 08:25:06</p>
+                            </div>
+                            <div class="btn-con">
+                                <div class="ico-course">
+                                    <p class="num-list">
+                                        <span class="count">3</span>
+                                        <span class="total">18</span>
+                                    </p>
+                                </div>
+                                <a href="#!" class="btn-mail">
+                                    <p class="num-list">
+                                        <span class="count">3</span>
+                                    </p>
+                                </a>
+                                <a href="#!" class="btn-setting">설정하기</a>
+                            </div>
+                        </div>
+                        <!-- // history-wrap -->
+
+                        <div class="title-wrap update-wrap pt-3">
+                            <p class="tit-m">업데이트 필요</p>
+                            <div class="num-list">
+                                <p class="count">5</p>
+                                <p class="total">18</p>
+                            </div>
+                        </div>
+
+                        <!-- course-wrap -->
+                        <div class="course-wrap">
+                            <div class="select-wrap">
+                                <div class="inp-select small">
+                                    <div class="select">
+                                        <p class="selected-value">코스전체</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">힐</li>
+                                        <li class="option" data-value="">레이크</li>
+                                        <li class="option" data-value="">밸리</li>
+                                    </ul>
+                                </div>
+                                <div class="inp-select small">
+                                    <div class="select">
+                                        <p class="selected-value">홀전체</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">1</li>
+                                        <li class="option" data-value="">2</li>
+                                        <li class="option" data-value="">3</li>
+                                        <li class="option" data-value="">4</li>
+                                        <li class="option" data-value="">5</li>
+                                        <li class="option" data-value="">6</li>
+                                        <li class="option" data-value="">7</li>
+                                        <li class="option" data-value="">8</li>
+                                        <li class="option" data-value="">9</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- course-list -->
+                            <div class="course-list">
+                                <div class="items updated">
+                                    <!-- update인 컨텐츠 updated class 추가 -->
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- red / green 색상 class -->
+                                            <p class="num">H.01</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">L</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2" onclick="popupOpenFn('change-pop1')">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.02</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2" onclick="popupOpenFn('change-pop2')">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con green">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.03</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                   <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery3">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <!-- update인 컨텐츠 updated class 추가 -->
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- red / green 색상 class -->
+                                            <p class="num">H.04</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">L</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.05</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items updated">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con green">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.06</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                   <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery3">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items updated">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con green">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.07</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                   <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery3">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <!-- update인 컨텐츠 updated class 추가 -->
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- red / green 색상 class -->
+                                            <p class="num">H.08</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">L</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.09</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items updated">
+                                    <!-- update인 컨텐츠 updated class 추가 -->
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- red / green 색상 class -->
+                                            <p class="num">H.01</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">L</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.02</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con green">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.03</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                   <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery3">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <!-- update인 컨텐츠 updated class 추가 -->
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- red / green 색상 class -->
+                                            <p class="num">H.04</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">L</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.05</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items updated">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con green">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.06</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                   <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery3">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items updated">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con green">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.07</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                   <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery3">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <!-- update인 컨텐츠 updated class 추가 -->
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- red / green 색상 class -->
+                                            <p class="num">H.08</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">L</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="type-con">
+                                        <p class="type">HILL</p>
+                                        <div class="hole-con red">
+                                            <!-- class red / green 색상 -->
+                                            <p class="num">H.09</p>
+                                            <p class="compose">PAR4</p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-con">
+                                        <div class="course-item">
+                                            <div class="course-img">
+                                                <div class="img-con">
+                                                    <canvas data-dot="200, 200" width="388" height="388"></canvas>
+                                                    <p class="size">R</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="history-con">
+                                            <div class="modify">
+                                                <p class="date">2023 - 4 - 24</p>
+                                                <p class="time">13:55:24</p>
+                                            </div>
+                                            <dl class="battery">
+                                                <dt>BATTERY</dt>
+                                                <dd class="battery1">
+                                                    <!-- battery1, battery2, battery3, battery4 clsss로 제어 -->
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </dd>
+                                            </dl>
+                                            <button type="button" class="btn btn-s gray2">최근 변경내역</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // course-list -->
+
+                            <!-- paging -->
+                            <div class="paging">
+                                <button type="button" class="prev"></button>
+                                <div class="page-list">
+                                    <button type="button" class="on">1</button>
+                                    <button type="button">2</button>
+                                    <button type="button">3</button>
+                                    <button type="button">4</button>
+                                    <button type="button">5</button>
+                                    <button type="button">6</button>
+                                    <button type="button">7</button>
+                                    <button type="button">8</button>
+                                    <button type="button">9</button>
+                                    <button type="button">10</button>
+                                </div>
+                                <button type="button" class="next"></button>
+                            </div>
+                            <!-- // paging -->
+                        </div>
+                        <!-- // course-wrap -->
+                    </div>
+                    <!-- // course-manage-wrap -->
+
+                </div>
+            </div>
+            <!-- // contents -->
+
+        </div>
+        <!-- // frame -->
+
+        <!-- footer -->
+        <div class="footer mo-only">
+            <div class="address">
+                <p class="logo">
+                    <img src="../../assets/img/common/footer_logo.png" alt="">
+                </p>
+                <address>
+                    <p><span>(주)골프존데카</span></p>
+                    <p>경기도 성남시 분당구 판교로 253(삼평동 621) 이노밸리 C동 303로 (13486)</p>
+                    <p>사업자 등록번호 : 214-87-45311</p>
+                    <p class="line">TEL : 031-709-8038~9 FAX : 031-709-7032</p>
+                    <p>© 2023 GolfzonDeca Inc. All Rights Reserved.</p>
+                    <p>GOLFBUDDY is a registered trademark of GolfzonDeca Inc.</p>
+                </address>
+            </div>
+        </div>
+        <!--// footer -->
+        
+        <!-- change-pop1 -->
+        <div class="popup-wrap" id="change-pop1" style="display: block;">
+            <div class="popup-frame">
+                <div class="inner">
+                    <button type="button" class="btn-close" onclick="popupCloseFn();"></button>
+                    <p class="tag">최근 변경 내역</p>
+                    <div class="course-con">
+                        <div class="course-item">
+                            <div class="course-img">
+                                <div class="img-con">
+                                    <canvas data-pin="200, 200, 100, 180" width="388" height="388"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <p>선택된 위치 : <strong>현재위치</strong></p>
+                            <p>직전 위치와의 거리 : <strong>3m</strong></p>
+                            <p>위치 기록 일시 : <strong>2023 - 5 -03   14:28:33</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // change-pop1 -->
+
+        <!-- change-pop2 -->
+        <div class="popup-wrap" id="change-pop2">
+            <div class="popup-frame">
+                <div class="inner">
+                    <button type="button" class="btn-close" onclick="popupCloseFn();"></button>
+                    <p class="tag">최근 변경 내역</p>
+                    <div class="course-con full">
+                        <div class="course-item">
+                            <p class="size">L</p>
+                            <div class="course-img">
+                                <div class="img-con">
+                                    <canvas data-pin="200, 200, 100, 180" width="388" height="388"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-item">
+                            <p class="size">R</p>
+                            <div class="course-img">
+                                <div class="img-con">
+                                    <canvas data-pin="200, 200, 100, 180" width="388" height="388"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <p>선택된 위치 : <strong>현재위치</strong></p>
+                            <p>직전 위치와의 거리 : <strong>3m</strong></p>
+                            <p>위치 기록 일시 : <strong>2023 - 5 -03   14:28:33</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // change-pop2 -->
+
+    </div>
+    <script>
+        let canvas = document.querySelectorAll('.course-item canvas');
+    
+        canvas.forEach(function(el){
+            let context = el.getContext("2d");
+            let dataPin = el.getAttribute('data-pin');
+            let dataDot = el.getAttribute('data-dot');
+    
+            const bgCourse = new Image();
+            const pinRed = new Image();
+            const pinGray = new Image();
+            const pinDot = new Image();
+    
+            bgCourse.src= "../../assets/img/content/course_round.svg";
+            pinRed.src= "../../assets/img/content/pin_red.svg";
+            pinGray.src= "../../assets/img/content/pin_gray.svg";
+            pinDot.src= "../../assets/img/content/pin_dot.svg";
+    
+            bgCourse.onload = function(){
+                context.drawImage(bgCourse, 0, 0,  el.width, el.height);
+    
+                if(dataPin){
+                    dataPin = dataPin.split(',');
+                    pinRed.onload = function(){
+                        context.drawImage(pinRed, dataPin[0] || 0, dataPin[1] || 0, 24, 39);
+                    }
+                    pinGray.onload = function(){
+                        context.drawImage(pinGray, dataPin[2] || 0, dataPin[3] || 0, 26, 69);
+                    }
+                }
+                if(dataDot){
+                    dataDot = dataDot.split(',');
+                    pinDot.onload = function(){
+                        context.drawImage(pinDot, dataDot[0] || 0, dataDot[1] || 0, 24, 24);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
