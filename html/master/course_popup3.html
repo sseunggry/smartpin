@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- change-pop2 -->
+        <div class="popup-wrap" id="change-pop2" style="display: block;">
+            <div class="popup-frame">
+                <div class="inner">
+                    <button type="button" class="btn-close" onclick="popupCloseFn();"></button>
+                    <p class="tag">최근 변경 내역</p>
+                    <div class="course-con full">
+                        <div class="course-item">
+                            <p class="size">L</p>
+                            <div class="course-img">
+                                <div class="img-con">
+                                    <canvas data-pin="200, 200, 100, 180" width="388" height="388"></canvas>
+                                </div>
+                            </div>
+                            <div class="info-box">
+                                <p>선택된 위치 : <strong>현재위치</strong></p>
+                                <p>직전 위치와의 거리 : <strong>3m</strong></p>
+                                <p>위치 기록 일시 : <strong>2023 - 5 -03   14:28:33</strong></p>
+                            </div>
+                        </div>
+                        <div class="course-item">
+                            <p class="size">R</p>
+                            <div class="course-img">
+                                <div class="img-con">
+                                    <canvas data-pin="200, 200, 100, 180" width="388" height="388"></canvas>
+                                </div>
+                            </div>
+                            <div class="info-box">
+                                <p>선택된 위치 : <strong>현재위치</strong></p>
+                                <p>직전 위치와의 거리 : <strong>3m</strong></p>
+                                <p>위치 기록 일시 : <strong>2023 - 5 -03   14:28:33</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // change-pop2 -->
+
+    </div>
+    <script>
+        let canvas = document.querySelectorAll('.course-item canvas');
+    
+        canvas.forEach(function(el){
+            let context = el.getContext("2d");
+            let dataPin = el.getAttribute('data-pin');
+            let dataDot = el.getAttribute('data-dot');
+    
+            const bgCourse = new Image();
+            const pinRed = new Image();
+            const pinGray = new Image();
+            const pinDot = new Image();
+    
+            bgCourse.src= "../../assets/img/content/course_round.svg";
+            pinRed.src= "../../assets/img/content/pin_red.svg";
+            pinGray.src= "../../assets/img/content/pin_gray.svg";
+            pinDot.src= "../../assets/img/content/pin_dot.svg";
+    
+            bgCourse.onload = function(){
+                context.drawImage(bgCourse, 0, 0,  el.width, el.height);
+    
+                if(dataPin){
+                    dataPin = dataPin.split(',');
+                    pinRed.onload = function(){
+                        context.drawImage(pinRed, dataPin[0] || 0, dataPin[1] || 0, 24, 39);
+                    }
+                    pinGray.onload = function(){
+                        context.drawImage(pinGray, dataPin[2] || 0, dataPin[3] || 0, 26, 69);
+                    }
+                }
+                if(dataDot){
+                    dataDot = dataDot.split(',');
+                    pinDot.onload = function(){
+                        context.drawImage(pinDot, dataDot[0] || 0, dataDot[1] || 0, 24, 24);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

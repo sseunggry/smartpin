@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+
+<meta http-equiv="subject" content="" />
+<meta http-equiv="title" content="" />
+<meta http-equiv="author" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+
+<link rel="stylesheet" type="text/css" href="../../assets/css/plugin/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+<script type="text/javascript" src="../../assets/js/plugin/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../assets/js/plugin/swiper.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<title>smartpin_manager</title>
+
+</head>
+<body>
+    <div class="wrap">
+        <!-- popup -->
+        <div class="popup-wrap" id="register-pop" style="display: block;">
+            <div class="popup-frame">
+                <div class="inner">
+                    <div class="title">
+                        <p>내역 등록</p>
+                    </div>
+                    <div class="detail-con">
+                        <div class="item-con">
+                            <div class="item">
+                                <div class="inp">
+                                    <div class="inp-group date cal">
+                                        <button type="button" class="btn-cal"></button>
+                                        <input type="text" placeholder="날짜 선택">
+                                    </div>
+                                    <div class="inp-select middle">
+                                        <div class="select">
+                                            <p class="selected-value">담당자 선택</p>
+                                        </div>
+                                        <ul class="list">
+                                            <li class="option" data-value="">김호준</li>
+                                            <li class="option" data-value="">이유라</li>
+                                            <li class="option" data-value="">권용준</li>
+                                            <li class="option" data-value="">강보권</li>
+                                            <li class="option" data-value="">정주명</li>
+                                            <li class="option" data-value="">장재일</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item flex">
+                                <div class="search-con">
+                                    <div class="inp">
+                                        <label for="inp1" class="inp-label blind">검색어 입력</label>
+                                        <div class="inp-area">
+                                            <div class="inp-group search">
+                                                <input type="text" id="inp1" placeholder="클럽명을 검색하세요.">
+                                                <button type="button" class="btn-search"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="txt">
+                                        <span>골프존카운티 안성H</span>
+                                        <button type="button" class="ico-del"></button>
+                                    </p>
+                                </div>
+                                <div class="inp-select middle">
+                                    <div class="select">
+                                        <p class="selected-value">코스 선택</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">힐</li>
+                                        <li class="option" data-value="">레이크</li>
+                                    </ul>
+                                </div>
+                                <div class="inp-select middle hole">
+                                    <div class="select">
+                                        <p class="selected-value">홀 선택</p>
+                                    </div>
+                                    <ul class="list">
+                                        <li class="option" data-value="">1</li>
+                                        <li class="option" data-value="">2</li>
+                                        <li class="option" data-value="">3</li>
+                                        <li class="option" data-value="">4</li>
+                                        <li class="option" data-value="">5</li>
+                                        <li class="option" data-value="">6</li>
+                                        <li class="option" data-value="">7</li>
+                                        <li class="option" data-value="">8</li>
+                                        <li class="option" data-value="">9</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="inp">
+                                    <div class="inp-group text-area">
+                                        <textarea placeholder="A/S 내용을 적어주세요"></textarea>
+                                    </div>
+                                </div>
+                                <div class="inp">
+                                    <div class="inp-group text-area">
+                                        <textarea placeholder="A/S 내용을 적어주세요"></textarea>
+                                    </div>
+                                </div>
+                                <div class="inp">
+                                    <div class="inp-group text-area">
+                                        <textarea placeholder="비고를 입력해주세요."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-con">
+                            <a href="#!" class="btn btn-m blue">저장</a>
+                            <a href="#!" class="btn btn-m gray2" onclick="popupCloseFn();">취소</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // popup -->
+
+    </div>
+
+</body>
+</html>
